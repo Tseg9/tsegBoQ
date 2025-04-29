@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Quantity Estimator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Simple Building Quantity Estimator<br>By TsegCode</h1>
+        <p class="disclaimer">Note from Tsegcoder: This provides a ROUGH estimate based on simple dimensions and standard assumptions. Not for final BoQ.</p>
+
+        <form id="quantity-form">
+            <div class="input-group">
+                <label for="length">Length (m):</label>
+                <input type="number" id="length" step="any" placeholder="e.g., 10" required>
+            </div>
+            <div class="input-group">
+                <label for="width">Width (m):</label>
+                <input type="number" id="width" step="any" placeholder="e.g., 8" required>
+            </div>
+            <div class="input-group">
+                <label for="height">Height (m):</label>
+                <input type="number" id="height" step="any" placeholder="e.g., 3" required>
+            </div>
+
+            <button type="submit">Calculate Quantities</button>
+        </form>
+
+        <div id="results" class="results-container" style="display: none;">
+            <h2>Estimated Quantities:</h2>
+            <ul>
+                <li><strong>Bricks:</strong> <span id="bricks-result">---</span> units</li>
+                <li><strong>Cement:</strong> <span id="cement-result">---</span> bags (50kg)</li>
+                <li><strong>Sand:</strong> <span id="sand-result">---</span> m³</li>
+                <li><strong>Aggregate (Gravel):</strong> <span id="aggregate-result">---</span> m³</li>
+                <li><strong>Steel Reinforcement:</strong> <span id="steel-result">---</span> kg</li>
+            </ul>
+            <div class="assumptions">
+                <h3>Based on Assumptions:</h3>
+                <ul>
+                    <li>Wall Thickness: 0.23m (9 inches) - Used for brick calculation.</li>
+                    <li>Brick Size (with mortar): 400mm x 200mm x 200mm</li>
+                    <li>Concrete Mix: M20 (1:2:3) - Used for Cement, Sand, Aggregate.</li>
+                    <li>Concrete Volume: Calculated as L x W x H (Simplified - assumes solid block).</li>
+                    <li>Steel Percentage: 1% of Concrete Volume (Typical for RCC).</li>
+                    <li>Material Densities: Cement=1440kg/m³, Steel=7850kg/m³.</li>
+                    <li>Wastage included (approx): Bricks 5%, Cement 3%, Sand/Aggregate 12%, Steel 5%.</li>
+                </ul>
+            </div>
+        </div>
+        <div id="error-message" class="error" style="display: none;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
